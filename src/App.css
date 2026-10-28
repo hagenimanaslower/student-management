@@ -1,0 +1,60 @@
+/* Clear form button */
+.clear-button {
+  margin-top: 12px;
+  background: #64748b;
+}
+
+.clear-button:hover {
+  background: #475569;
+}
+
+/* Keep student details and Delete button aligned */
+.student-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.student-details {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Delete one student */
+.delete-student-button {
+  width: auto;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 10px 14px;
+  background: #dc2626;
+  font-size: 14px;
+}
+
+.delete-student-button:hover {
+  background: #b91c1c;
+}
+
+/* Delete all students */
+.delete-all-button {
+  margin-top: 20px;
+  background: #991b1b;
+}
+
+.delete-all-button:hover {
+  background: #7f1d1d;
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+  .student-card {
+    flex-wrap: wrap;
+  }
+
+  .student-details {
+    flex: 1 1 calc(100% - 60px);
+  }
+
+  .delete-student-button {
+    margin-left: auto;
+  }
+}

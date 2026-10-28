@@ -1,0 +1,383 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  color: #1e293b;
+}
+
+/* Sticky navigation bar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 20px 30px;
+  background: #172554;
+  box-shadow: 0 3px 10px #00000015;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #93c5fd;
+}
+
+.navbar a.active {
+  border-bottom: 2px solid #93c5fd;
+  padding-bottom: 5px;
+}
+
+/* Welcome message displayed by useEffect */
+.welcome-message {
+  max-width: 720px;
+  margin: 20px auto 0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px #1e40af10;
+}
+
+.welcome-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.welcome-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.welcome-message h2 {
+  margin: 0 0 6px;
+  color: #1e40af;
+  font-size: 17px;
+}
+
+.welcome-message p {
+  margin: 0;
+  color: #1e40af;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.welcome-close {
+  width: 36px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 6px;
+  background: transparent;
+  color: #1e40af;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.welcome-close:hover {
+  background: #bfdbfe;
+  transform: none;
+}
+
+/* Main content */
+.container {
+  max-width: 720px;
+  margin: 35px auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px #0f172a12;
+}
+
+.page-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+h1 {
+  margin-top: 0;
+  color: #1d4ed8;
+  text-align: center;
+  font-size: 28px;
+}
+
+h2 {
+  color: #1e40af;
+}
+
+.subtitle {
+  margin-bottom: 25px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Registration form */
+form {
+  margin-top: 25px;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px #2563eb20;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.clear-button {
+  margin-top: 12px;
+  background: #64748b;
+}
+
+.clear-button:hover {
+  background: #475569;
+}
+
+/* Form error */
+.error-message {
+  margin-top: 15px;
+  padding: 12px;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Student records and search */
+.students-section {
+  margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid #e2e8f0;
+  scroll-margin-top: 100px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+.section-description {
+  margin-bottom: 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.record-count {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.empty-state {
+  margin-top: 20px;
+  padding: 18px;
+  background: #f8fafc;
+  color: #64748b;
+  text-align: center;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+}
+
+.student-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.student-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.student-number {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.student-details h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+}
+
+.student-details p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* About page */
+.about-card {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.about-card h2 {
+  margin-top: 0;
+  font-size: 19px;
+}
+
+.about-card li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.technology {
+  margin-top: 22px;
+  color: #64748b;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Return to Home button */
+.home-button {
+  display: block;
+  width: fit-content;
+  margin: 28px auto 0;
+  padding: 13px 24px;
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.home-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Keyboard accessibility */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* Responsive layout */
+@media (max-width: 760px) {
+
+  .container,
+  .welcome-message {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-top: 25px;
+    padding: 22px;
+  }
+
+  .navbar {
+    padding: 18px;
+    gap: 25px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .record-count {
+    align-self: flex-start;
+  }
+}
